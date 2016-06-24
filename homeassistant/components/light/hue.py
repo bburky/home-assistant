@@ -219,6 +219,13 @@ class HueLight(Light):
         return self.info['state'].get('ct')
 
     @property
+    def reachable(self):
+        """Return true if device is reachable."""
+        self.update_lights()
+
+        return self.info['state']['reachable']
+
+    @property
     def is_on(self):
         """Return true if device is on."""
         self.update_lights()
